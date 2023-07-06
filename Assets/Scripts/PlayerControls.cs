@@ -15,6 +15,9 @@ public class PlayerControls : MonoBehaviour
 
     private float timeSinceLastShot;
 
+    [SerializeField]
+    public int health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,12 @@ public class PlayerControls : MonoBehaviour
     {
         Movement();
         Shoot();
+
+        //player dies
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Movement()

@@ -25,6 +25,9 @@ public class Shadow : MonoBehaviour
 
     private bool isDashing;
 
+    [SerializeField] public int health;
+    [SerializeField] private int damageDealt;
+
     void Start()
     {
         target = new Vector3(Random.Range(wanderAreaTopLeft.x, wanderAreaBottomRight.x), Random.Range(wanderAreaBottomRight.y, wanderAreaTopLeft.y), 0);
@@ -42,6 +45,13 @@ public class Shadow : MonoBehaviour
         else
         {
             Dash();
+        }
+
+        //check if enemy is dead
+        if (health <= 0)
+        {
+            //enemy dies
+            Destroy(gameObject);
         }
     }
 
@@ -84,6 +94,17 @@ public class Shadow : MonoBehaviour
             isDashing = false;
             timeSinceDash = 0;
             distanceDashed = 0;
+        }
+    }
+
+    //check collisions and take away player health
+    private void OnTriggerEnter2D(Collider2D collision)
+{
+        //check if colliding with player
+        if(collision.gameObject == player)
+        {
+            //subtract player health
+            player.GetComponent<PlayerControls>().health -= damageDealt;
         }
     }
 }
