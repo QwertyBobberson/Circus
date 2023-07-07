@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControls : MonoBehaviour
+public class PlayerControls : Damageable
 {
-    //variables 
+    //variables
     public float speed;
 
     [SerializeField]
@@ -15,28 +15,17 @@ public class PlayerControls : MonoBehaviour
 
     private float timeSinceLastShot;
 
-    [SerializeField]
-    public int health;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         Movement();
         Shoot();
-
-        //player dies
-        if(health <= 0)
-        {
-            Destroy(gameObject);
-        }
     }
 
+    /// <summary>
+    /// Handle movement and rotation of player
+    /// </summary>
     private void Movement()
     {
         Vector2 movement = new Vector2();
@@ -73,6 +62,9 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handle spawning projectiles
+    /// </summary>
     private void Shoot()
     {
         if (Input.GetMouseButtonDown(0) && timeSinceLastShot > fireSpeed)
@@ -80,7 +72,7 @@ public class PlayerControls : MonoBehaviour
             //get rotation player is facing + store radians
             float radians = transform.rotation.eulerAngles.z / 180 * Mathf.PI;
 
-            //get direction the arrows will spawn and go in 
+            //get direction the arrows will spawn and go in
             Vector3 direction = new Vector3(Mathf.Cos(radians), Mathf.Sin(radians));
 
             //create and spawn arrow in correct direction
