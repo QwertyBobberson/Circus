@@ -7,6 +7,7 @@ public class PlayerControls : Damageable
     //variables
     public float speed;
 
+
     [SerializeField]
     private float fireSpeed;
 
