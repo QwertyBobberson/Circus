@@ -794,8 +794,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   dashSpeed: 50
-  dashDistance: 10
-  dashTime: 0.25
+  dashDistance: 25
+  dashTime: 1
   attackDistance: 20
   changeTargetRate: 3
   wanderAreaTopLeft: {x: -8, y: 4}
