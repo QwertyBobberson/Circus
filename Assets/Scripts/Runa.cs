@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Runa : Enemy
+public class Runa : LongRangeEnemy
 {
     [SerializeField] private int maxClones;
     [SerializeField] private float cloneRadius;
-    [SerializeField] private float attackRate;
     [SerializeField] public int shieldHealth;
 
-    [SerializeField] private GameObject projectile;
     [SerializeField] private GameObject lite;
     public static int clonesRemaining;
 
@@ -19,6 +17,9 @@ public class Runa : Enemy
         {
             SummonLites();
         }
+
+        FacePlayer();
+        Shoot();
     }
 
     /// <summary>

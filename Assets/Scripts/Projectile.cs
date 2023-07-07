@@ -40,5 +40,7 @@ public class Projectile : Collideable
             //subtract shadow health
             HitDamageable(damageable);
         }
+
+        Destroy(gameObject);
     }
 }

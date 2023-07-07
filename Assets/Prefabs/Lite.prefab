@@ -101,6 +101,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  element: 3
+  projectile: {fileID: 5167117350723796341, guid: e9dcc9d22044d2b4da814d3a56adabb4, type: 3}
+  fireSpeed: 2
+  fireRate: 0
+  max: 5
+  min: 1
 --- !u!58 &5055312199195861348
 CircleCollider2D:
   m_ObjectHideFlags: 0

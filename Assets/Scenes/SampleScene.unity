@@ -217,34 +217,16 @@ GameObject:
   m_Component:
   - component: {fileID: 433072831}
   - component: {fileID: 433072830}
-  - component: {fileID: 433072829}
+  - component: {fileID: 433072834}
+  - component: {fileID: 433072833}
+  - component: {fileID: 433072832}
   m_Layer: 0
   m_Name: Runa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &433072829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433072828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9db90eb87691a9f9355e7f9fc94df4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  element: 0
-  maxClones: 10
-  cloneRadius: 3
-  attackRate: 2
-  shieldHealth: 10
-  projectile: {fileID: 0}
-  lite: {fileID: 596727773189457953, guid: 3ff7685a4d6b1c18a98e4fbb32e34532, type: 3}
+  m_IsActive: 1
 --- !u!212 &433072830
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -312,6 +294,98 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &433072832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433072828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9db90eb87691a9f9355e7f9fc94df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 4
+  element: 3
+  projectile: {fileID: 5167117350723796341, guid: e9dcc9d22044d2b4da814d3a56adabb4, type: 3}
+  fireSpeed: 5
+  maxClones: 5
+  cloneRadius: 10
+  shieldHealth: 0
+  lite: {fileID: 596727773189457953, guid: 3ff7685a4d6b1c18a98e4fbb32e34532, type: 3}
+--- !u!50 &433072833
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433072828}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &433072834
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433072828}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,11 +637,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8385dc03c01e4419885d9cf97c4daf79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 50
   element: 0
-  speed: 5
-  fireSpeed: 1
+  speed: 10
+  fireSpeed: 0.5
   arrow: {fileID: 5176782830286809477, guid: 823875198549d72358c9bc479f5a3195, type: 3}
+  projectileStartDistance: 5
 --- !u!212 &680415741
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -717,7 +792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1926916794
 MonoBehaviour:
   m_ObjectHideFlags: 0

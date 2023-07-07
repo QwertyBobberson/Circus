@@ -15,6 +15,9 @@ public class PlayerControls : Damageable
 
     private float timeSinceLastShot;
 
+    [SerializeField]
+    private float projectileStartDistance;
+
     // Update is called once per frame
     protected override void Update()
     {
@@ -76,7 +79,7 @@ public class PlayerControls : Damageable
             Vector3 direction = new Vector3(Mathf.Cos(radians), Mathf.Sin(radians));
 
             //create and spawn arrow in correct direction
-            Instantiate(arrow, transform.position + direction, transform.rotation, null);
+            Instantiate(arrow, transform.position + direction * projectileStartDistance, transform.rotation, null);
 
             //reset time for firing speed
             timeSinceLastShot = 0;

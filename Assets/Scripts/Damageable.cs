@@ -39,6 +39,6 @@ public class Damageable : Collideable
     public virtual void TakeDamage(int damage, Element attackElement)
     {
         float attackMultiplier = Tables.damageTable[(int)element, (int)attackElement];
-        health -= damage;
+        health -= (int)(damage * attackMultiplier);
     }
 }
