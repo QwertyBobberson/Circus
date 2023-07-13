@@ -7,11 +7,13 @@ public class Blaise : Enemy
     [SerializeField] private float dodgeSpeed;
     [SerializeField] private float dodgeLength;
 
+    [SerializeField] private float timeStationary;
     [SerializeField] private float dodgeTime;
 
     private int direction;
 
     private float timeSinceDodge;
+    private float timeSpentDodging;
 
     // Update is called once per frame
     protected override void Update()
@@ -23,26 +25,39 @@ public class Blaise : Enemy
 
 
     //blaise dodges back and forth horizontally
-    //tracking fireballs 
-    //fire wall 
+    //tracking fireballs
+    //fire wall
     private void LongRange()
     {
-        //dodging 
-        if(timeSinceDodge > dodgeTime)
+        //dodging
+        if(timeSinceDodge > timeStationary)
         {
-            //determine if he will dodge left or right 
-            direction = Random.Range(1, 3);
-
-            if (direction == 1)
+            if(direction == 0)
             {
-                transform.Translate(-dodgeLength, 0, 0);
+                float xPos = Camera.main.WorldToViewportPoint(transform.position).x;
+                float distanceToEdge = Mathf.Abs(0.5f - xPos);
+                if(distanceToEdge > 0.4f)
+                {
+                    direction = -(Mathf.RoundToInt(xPos) * 2 - 1);
+                }
+                else
+                {
+                    direction = (Random.Range(0, 2) * 2) - 1;
+                }
+            }
+
+            if(timeSpentDodging < dodgeTime)
+            {
+                //determine if he will dodge left or right
+                transform.Translate(direction * dodgeSpeed * Time.deltaTime, 0, 0);
+                timeSpentDodging += Time.deltaTime;
             }
             else
             {
-                transform.Translate(dodgeLength, 0, 0);
+                timeSpentDodging = 0;
+                timeSinceDodge = 0;
+                direction = 0;
             }
-
-            timeSinceDodge = 0;
         }
 
         timeSinceDodge += Time.deltaTime;
